@@ -2,8 +2,8 @@
 **Module 5 of Master of Computer Vision -  Team 4**
 
 #### Authors
-- _E. Mainou, xxx@gmail.com - [acasadevall](https://github.com/acasadevall)_
-- _H. Valenciano, xxx@gmail.com - [SCLSCL](https://github.com/SCLSCL)_
+- _E. Mainou, xxx@gmail.com - [acasadevall](https://github.com/xxx)_
+- _H. Valenciano, xxx@gmail.com - [SCLSCL](https://github.com/xxx)_
 - _P. Albacar, pol.albacar@hotmail.com - [polalbacar](https://github.com/polalbacar)_
 
 # Week 1
