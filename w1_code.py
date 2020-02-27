@@ -77,7 +77,7 @@ print(' '.join('%5s' % classes[labels[j]] for j in range(batch_size)))
 #                            Neural Network
 # -----------------------------------------------------------------------------------
 
-class MLP(nn.Module):
+'''class MLP(nn.Module):
     def __init__(self):
         super(MLP, self).__init__()
         self.input_size = input_size
@@ -191,4 +191,6 @@ with torch.no_grad():
 
 for i in range(10):
     print('Accuracy of %5s : %2d %%' % (
-        classes[i], 100 * class_correct[i] / class_total[i]))
+        classes[i], 100 * class_correct[i] / class_total[i]))'''
+
+
