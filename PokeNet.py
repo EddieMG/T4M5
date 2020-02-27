@@ -10,8 +10,8 @@ Creating the dataset and the dataloader.
 Remember to override the __getitem__ and __len__
 
 """
-trainset_path =
-testset_path =
+trainset_path ='/home/mcv/datasets/MIT_split/train/'
+testset_path ='/home/mcv/datasets/MIT_split/test/'
 
 trainset = Dataset.ImageFolder(root=trainset_path , transform = transforms.ToTensor())
 trainloader = torch.utils.data.DataLoader(trainset, batch_size=32,
@@ -19,12 +19,9 @@ trainloader = torch.utils.data.DataLoader(trainset, batch_size=32,
 
 
 
-trainset = Dataset.ImageFolder(root='./data', transform = transforms.ToTensor())
+trainset = Dataset.ImageFolder(root=testset_path, transform = transforms.ToTensor())
 testloader = torch.utils.data.DataLoader(testset, batch_size=4,
                                          shuffle=False, num_workers=2)
-
-classes = ('plane', 'car', 'bird', 'cat',
-           'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
 
 """
