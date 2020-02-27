@@ -4,17 +4,25 @@ import torchvision.transforms as transforms
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
+import matplotlib.pyplot as plt
+import numpy as np
 from datetime import datetime
 import os
 now = datetime.now()
 date_time = now.strftime("pol_%m-%d-%Y_%H:%M:%S")
+print("---------------------------------------------------------")
+print("                   " + date_time + "                     ")
+print("---------------------------------------------------------")
+
+gpu_id = ""
+torch.cuda.set_device(device=gpu_id)
 
 train_data_dir='/home/mcv/datasets/MIT_split/train'
 val_data_dir='/home/mcv/datasets/MIT_split/test'
 test_data_dir='/home/mcv/datasets/MIT_split/test'
 img_width = 256
 img_height = 256
-batch_size  = 32
+batch_size  = 4
 epochs = 30
 validation_samples = 807
 
@@ -23,25 +31,70 @@ validation_samples = 807
 # -----------------------------------------------------------------------------------
 #                            Loading and normalizing data
 # -----------------------------------------------------------------------------------
+# The output of torchvision datasets are PILImage images of range [0, 1]. We transform them to Tensors of normalized range [-1, 1]
+
 transform = transforms.Compose(
     [transforms.ToTensor(),
      transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
 
-trainset = torchvision.datasets.CIFAR10(root='./data', train=True,
-                                        download=True, transform=transform)
-trainloader = torch.utils.data.DataLoader(trainset, batch_size=4,
-                                          shuffle=True, num_workers=2)
+trainset = torchvision.datasets.ImageFolder(root=train_data_dir,
+                                            transform=transform)
 
-testset = torchvision.datasets.CIFAR10(root='./data', train=False,
-                                       download=True, transform=transform)
-testloader = torch.utils.data.DataLoader(testset, batch_size=4,
+trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size,
+                                          shuffle=True,
+                                          num_workers=2)
+
+testset = torchvision.datasets.ImageFolder(root=test_data_dir,
+                                            transform=transform)
+
+testloader = torch.utils.data.DataLoader(testset, batch_size=batch_size,
                                          shuffle=False, num_workers=2)
 
-classes = ('plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
+#classes = ('plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
+classes = ['coast','forest','highway','inside_city','mountain','Opencountry','street','tallbuilding']
+
+print("trainloader")
+print(trainloader)
+
+def imsave(img):
+    img = img / 2 + 0.5     # unnormalize
+    npimg = img.numpy()
+    plt.imsave(date_time+".png", np.transpose(npimg, (1, 2, 0)))
+
+
+# get some random training images
+dataiter = iter(trainloader)
+images, labels = dataiter.next()
+
+
+# show images
+imsave(torchvision.utils.make_grid(images))
+
+# print labels
+print(' '.join('%5s' % classes[labels[j]] for j in range(batch_size)))
 
 # -----------------------------------------------------------------------------------
-#                            Convolutional Neural Network
+#                            Neural Network
 # -----------------------------------------------------------------------------------
+
+class MLP(nn.Module):
+    def __init__(self):
+        super(MLP, self).__init__()
+        self.input_size = input_size
+        self.hidden_size = hidden_size
+        self.num_classes = num_classes
+        self.fc1 = nn.Linear(self.input_size, self.hidden_size)
+        self.relu = nn.ReLU()
+        self.fc2 = nn.Linear(self.hidden_size, self.num_classes)
+        self.softmax = torch.nn.Softmax
+
+    def forward(self, x):
+        hidden = self.fc1(x)
+        relu = self.relu(hidden)
+        output = self.fc2(relu)
+        output = self.softmax(output)
+        return output
+
 class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
