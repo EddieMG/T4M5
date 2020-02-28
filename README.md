@@ -9,3 +9,6 @@
 # Week 1
 **Goal: Implement the final model from M3 (Image Classification) in Pytorch**
 
+# Paper
+The paper will be updated weekly according to the work done in the project.
+[M5 Project: Object Detection and Segmentation](https://www.overleaf.com/read/zwjphfsmqyjt)
