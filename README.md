@@ -3,7 +3,7 @@
 
 #### Authors
 - _E. Mainou, eduardmgobierno@gmail.com - [EddieMG](https://github.com/EddieMG)_
-- _H. Valenciano, xxx@gmail.com - [SCLSCL](https://github.com/xxx)_
+- _H. Valenciano, hermes.valenciano1996@gmail.com - [hermesvf](https://github.com/hermesvf)_
 - _P. Albacar, pol.albacar@hotmail.com - [polalbacar](https://github.com/polalbacar)_
 
 # Week 1
