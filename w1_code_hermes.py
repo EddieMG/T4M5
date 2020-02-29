@@ -99,51 +99,100 @@ def train_accuracy():
             correct += (predicted == labels).sum().item()
     return 100 * correct / total
 
-EPOCHS = 20
 
-train_losses = []
-train_acc = []
-val_acc = []
-for epoch in range(EPOCHS):  # loop over the dataset multiple times
-    running_loss = 0.0
-    epoch_loss = 0.0
-    net.train()
-    for i, data in enumerate(trainloader, 0):
-        # get the inputs; data is a list of [inputs, labels]
-        inputs, labels = data
+data_loaders = {"train": trainloader, "val": testloader}
+data_lengths = {"train": len(trainloader), "val": len(testloader)}
 
-        # zero the parameter gradients
-        optimizer.zero_grad()
 
-        # forward + backward + optimize
-        outputs = net(inputs)
-        loss = criterion(outputs, labels)
-        loss.backward()
-        optimizer.step()
+def train_model(optimizer, criterion, epochs=20):
+    curves = {"train_loss": [], "val_loss": [], "train_acc": [], "val_acc": []}
+    for epoch in range(1, epochs+1):
+        print("Epoch {}/{}".format(epoch, epochs))
+        for phase in ['train', 'val']:
+            if phase == 'train':
+                #optimizer = scheduler(optimizer, epoch)
+                net.train(True)  # Set model to training mode
+            else:
+                net.train(False)  # Set model to evaluate mode
 
-        #statistics
-        running_loss += loss.item()
-        epoch_loss += loss.item()
-        if i % 200 == 199:  # print every 200 mini-batches
-            print('[%d, %5d] loss: %.3f' %
-                  (epoch + 1, i + 1, running_loss / 200))
             running_loss = 0.0
 
-    net.eval()
-    train_acc.append(train_accuracy())
-    val_acc.append(val_accuracy())
-    epoch_loss = epoch_loss / len(trainloader)
-    train_losses.append(epoch_loss)
-    print("["+str(epoch)+"] train_loss: "+str(epoch_loss)+" - train_acc: "+str(train_acc[-1])+ " - val_acc: "+str(val_acc[-1]))
+            # Iterate over data.
+            for data in data_loaders[phase]:
+                inputs, labels = data
+                outputs = net(inputs)
+                # zero the parameter gradients
+                optimizer.zero_grad()
+                loss = criterion(outputs, labels)
 
-print('Finished Training')
+                # backward + optimize only if in training phase
+                if phase == 'train':
+                    loss.backward()
+                    # update the weights
+                    optimizer.step()
+
+                # print loss statistics
+                running_loss += loss.item()
+
+            epoch_loss = running_loss / data_lengths[phase]
+            curves[phase+"_loss"].append(epoch_loss)
+            print('{} Loss: {:.4f}'.format(phase, epoch_loss))
+        t_a = train_accuracy()
+        v_a = val_accuracy()
+        curves["train_acc"].append(t_a)
+        curves["val_acc"].append(v_a)
+        print("train_acc: ", t_a)
+        print("val_acc: ", v_a)
+
+    return curves
+
+curves = train_model(optimizer, criterion, 120)
+
+print(curves)
+
+# EPOCHS = 20
+# train_losses = []
+# train_acc = []
+# val_acc = []
+# for epoch in range(EPOCHS):  # loop over the dataset multiple times
+#     running_loss = 0.0
+#     epoch_loss = 0.0
+#     net.train()
+#     for i, data in enumerate(trainloader, 0):
+#         # get the inputs; data is a list of [inputs, labels]
+#         inputs, labels = data
+#
+#         # zero the parameter gradients
+#         optimizer.zero_grad()
+#
+#         # forward + backward + optimize
+#         outputs = net(inputs)
+#         loss = criterion(outputs, labels)
+#         loss.backward()
+#         optimizer.step()
+#
+#         #statistics
+#         running_loss += loss.item()
+#         epoch_loss += loss.item()
+#         if i % 200 == 199:  # print every 200 mini-batches
+#             print('[%d, %5d] loss: %.3f' %
+#                   (epoch + 1, i + 1, running_loss / 200))
+#             running_loss = 0.0
+#
+#     net.eval()
+#     train_acc.append(train_accuracy())
+#     val_acc.append(val_accuracy())
+#     epoch_loss = epoch_loss / len(trainloader)
+#     train_losses.append(epoch_loss)
+#     print("["+str(epoch)+"] train_loss: "+str(epoch_loss)+" - train_acc: "+str(train_acc[-1])+ " - val_acc: "+str(val_acc[-1]))
+#
+# print('Finished Training')
 
 class_correct = list(0. for i in range(len(classes)))
 class_total = list(0. for i in range(len(classes)))
 with torch.no_grad():
     for data in testloader:
         images, labels = data
-        print("labels: ", labels)
         outputs = net(images)
         _, predicted = torch.max(outputs, 1)
         c = (predicted == labels).squeeze()
