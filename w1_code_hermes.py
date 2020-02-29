@@ -75,12 +75,39 @@ net = PolNet()
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
 
-EPOCHS = 200
+def val_accuracy():
+    correct = 0
+    total = 0
+    with torch.no_grad():
+        for data in testloader:
+            images, labels = data
+            outputs = net(images)
+            _, predicted = torch.max(outputs.data, 1)
+            total += labels.size(0)
+            correct += (predicted == labels).sum().item()
+    return 100 * correct / total
 
-losses = []
+def train_accuracy():
+    correct = 0
+    total = 0
+    with torch.no_grad():
+        for data in trainloader:
+            images, labels = data
+            outputs = net(images)
+            _, predicted = torch.max(outputs.data, 1)
+            total += labels.size(0)
+            correct += (predicted == labels).sum().item()
+    return 100 * correct / total
+
+EPOCHS = 20
+
+train_losses = []
+train_acc = []
+val_acc = []
 for epoch in range(EPOCHS):  # loop over the dataset multiple times
-    print("Epoch "+str(epoch))
     running_loss = 0.0
+    epoch_loss = 0.0
+    net.train()
     for i, data in enumerate(trainloader, 0):
         # get the inputs; data is a list of [inputs, labels]
         inputs, labels = data
@@ -94,26 +121,22 @@ for epoch in range(EPOCHS):  # loop over the dataset multiple times
         loss.backward()
         optimizer.step()
 
-        # print statistics
+        #statistics
         running_loss += loss.item()
-        epoch_loss = running_loss / len(trainloader)
-        losses.append(epoch_loss)
+        epoch_loss += loss.item()
+        if i % 200 == 199:  # print every 200 mini-batches
+            print('[%d, %5d] loss: %.3f' %
+                  (epoch + 1, i + 1, running_loss / 200))
+            running_loss = 0.0
 
+    net.eval()
+    train_acc.append(train_accuracy())
+    val_acc.append(val_accuracy())
+    epoch_loss = epoch_loss / len(trainloader)
+    train_losses.append(epoch_loss)
+    print("["+str(epoch)+"] train_loss: "+str(epoch_loss)+" - train_acc: "+str(train_acc[-1])+ " - val_acc: "+str(val_acc[-1]))
 
 print('Finished Training')
-
-correct = 0
-total = 0
-with torch.no_grad():
-    for data in testloader:
-        images, labels = data
-        outputs = net(images)
-        _, predicted = torch.max(outputs.data, 1)
-        total += labels.size(0)
-        correct += (predicted == labels).sum().item()
-
-print('Accuracy of the network on the test images: %d %%' % (
-    100 * correct / total))
 
 class_correct = list(0. for i in range(len(classes)))
 class_total = list(0. for i in range(len(classes)))
