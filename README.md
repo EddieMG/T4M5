@@ -12,3 +12,10 @@
 # Paper
 The paper will be updated weekly according to the work done in the project.
 [M5 Project: Object Detection and Segmentation](https://www.overleaf.com/read/zwjphfsmqyjt)
+
+# Report
+
+The weekly report delivered can be found on the following link:
+[M5 Report: Week 1](https://docs.google.com/presentation/d/1n3wsHfT0nL-1LW-X02lgyh8OLpLObmZt5nEjD4H5RaE/edit?usp=sharing)
+
+
