@@ -32,7 +32,6 @@ class PokeNet(nn.Module):
 
 
         self.fc1 = nn.Linear(32 * 5 * 5, 120)
-        
         self.fc2 = nn.Linear(120, 84)
         self.fc = nn.Linear(84,8)
 
@@ -104,7 +103,7 @@ Train the model
 
 def main():
 
-    for epoch in range(150):  # loop over the dataset multiple times
+    for epoch in range(50):  # loop over the dataset multiple times
         net.train()
         a = Switcher()
         trainloader = a.trainloader(epoch % 5)
@@ -147,6 +146,8 @@ def main():
         correct = 0
         total = 0
         val_loss = 0.0
+        
+        
         with torch.no_grad():
             net.eval()
             for data in testloader:
@@ -159,6 +160,24 @@ def main():
             writer.add_scalar('Val_Loss/train', val_loss, epoch)
             print("Val loss "+ str(val_loss))
             writer.add_scalar('val_Accuracy/train', (100 * correct / total), epoch)
+            print( 'Accuracy of the network on the validation data: %d %%'%(100 * correct / total))
+            
+        testset1 = torchvision.datasets.ImageFolder(root=testset_path, transform = transforms.ToTensor())
+
+        testloader1 = torch.utils.data.DataLoader(testset1, batch_size=32,
+                                         shuffle=False, num_workers=2)    
+        with torch.no_grad():
+            net.eval()
+            for data in testloader1:
+                images, labels = data
+                outputs = net(images)
+                val_loss = criterion(outputs, labels)
+                _, predicted = torch.max(outputs.data, 1)
+                total += labels.size(0)
+                correct += (predicted == labels).sum().item()
+            writer.add_scalar('test_Loss/train', val_loss, epoch)
+            print("Val loss "+ str(val_loss))
+            writer.add_scalar('test_Accuracy/train', (100 * correct / total), epoch)
             print( 'Accuracy of the network on the validation data: %d %%'%(100 * correct / total))
         
     print('Finished Training')
