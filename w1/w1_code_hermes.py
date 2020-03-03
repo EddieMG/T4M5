@@ -150,6 +150,12 @@ curves = train_model(optimizer, criterion, 120)
 
 print(curves)
 
+plt.plot(list(range(120)),curves['train_acc'],list(range(120)),curves['val_acc'])
+plt.ylabel("accuracy")
+plt.xlabel("epoch")
+plt.title("Accuracy learning curve")
+plt.legend("train", "accuracy")
+
 # EPOCHS = 20
 # train_losses = []
 # train_acc = []
