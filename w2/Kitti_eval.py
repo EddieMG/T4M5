@@ -119,36 +119,24 @@ cfg.MODEL.WEIGHTS = os.path.join(cfg.OUTPUT_DIR, "model_final_9000.pth") #no tre
 cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.6
 cfg.DATASETS.TEST = ("KITTI_val", )
 cfg.MODEL.ROI_HEADS.NUM_CLASSES = 9  
-#predictor = DefaultPredictor(cfg)
-cfg.DATASETS.TRAIN = ("KITTI_train",)
-trainer = DefaultTrainer(cfg) 
+predictor = DefaultPredictor(cfg)
+
 
 
 #here we extract from the validation data a couple of images to check how the training is going, this part should be skipped on the for loop of the training.
-#from detectron2.utils.visualizer import ColorMode
-#dataset_dicts = get_KITTI_dicts(val)
-#idx_train = 0
+from detectron2.utils.visualizer import ColorMode
+dataset_dicts = get_KITTI_dicts(val)
+idx_train = 0
 
-#for d in dataset_dicts:
-    #im = cv2.imread(d["file_name"])
-    #outputs = predictor(im)
-    #print(outputs)
-   # visualizer = Visualizer(im[:, :, ::-1], metadata=KITTI_metadata, scale=0.5)
-  #  visualizer = visualizer.draw_instance_predictions(outputs["instances"].to("cpu"))
- #   cv2.imwrite("predictions_sample_" + str(idx_train) + ".png", visualizer.get_image()[:, :, ::-1])
-#    idx_train = idx_train + 1
-
-
-from detectron2.evaluation import COCOEvaluator, inference_on_dataset
-from detectron2.data import build_detection_test_loader
-evaluator = COCOEvaluator("KITTI_val", cfg, False, output_dir="./output2/")
-val_loader = build_detection_test_loader(cfg, "KITTI_val")
-inference_on_dataset(trainer.model, val_loader, evaluator)
-'''for d in dataset_dicts: 
+for d in dataset_dicts:
     im = cv2.imread(d["file_name"])
     outputs = predictor(im)
-    print(outputs)     '''
-    
+    print(outputs)
+    visualizer = Visualizer(im[:, :, ::-1], metadata=KITTI_metadata, scale=0.5)
+    visualizer = visualizer.draw_instance_predictions(outputs["instances"].to("cpu"))
+    cv2.imwrite("predictions_sample_" + str(idx_train) + ".png", visualizer.get_image()[:, :, ::-1])
+    idx_train = idx_train + 1
+
 
 #We should save here the prediction in json format to then evaluate with the cpp. This should be done at N iterations.
 #out_path = '/home/grupo04/T4M5/predictions.json'
