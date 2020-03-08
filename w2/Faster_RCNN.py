@@ -34,6 +34,8 @@ for directory in os.listdir(testset_path):
         print("random file: ", path)
         im = cv2.imread(path)
         outputs = predictor(im)
+        print("----------------------------------------")
+        print(outputs)
         #outputs["instances"].pred_classes
         #outputs["instances"].pred_boxes
         v = Visualizer(im[:, :, ::-1], MetadataCatalog.get(cfg.DATASETS.TRAIN[0]), scale=1.2)
