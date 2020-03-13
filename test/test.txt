@@ -1,0 +1,1 @@
+/home/mcv/datasets/KITTI/training/label_2/000000.txt
