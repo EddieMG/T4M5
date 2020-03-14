@@ -7,6 +7,7 @@ setup_logger()
 # import some common libraries
 import numpy as np
 import cv2
+from PIL import Image
 import random
 import os
 from os import listdir
@@ -28,11 +29,13 @@ cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.5  # set threshold for this model
 cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url("COCO-Detection/faster_rcnn_X_101_32x8d_FPN_3x.yaml")
 predictor = DefaultPredictor(cfg)
 
+coco_classes = MetadataCatalog.get("coco_2017_val").thing_classes
+
 folder_images_path = '/home/mcv/datasets/KITTI-MOTS/training/image_02/'
 folder_label_path = '/home/mcv/datasets/KITTI-MOTS/instances/'
 
 for f, folder in tqdm(enumerate(listdir(folder_images_path))):
-    print("--------------------------")
+    print(str(f)+"/"+str(len(listdir(folder_images_path))))
     images_path = join(folder_images_path, folder)
     onlyimages = [ima for ima in listdir(images_path) if isfile(join(images_path, ima))]
     for i, image in enumerate(onlyimages):
@@ -44,7 +47,10 @@ for f, folder in tqdm(enumerate(listdir(folder_images_path))):
         outputs = predictor(im)
         print(image_path)
         print(label_path)
-        print(outputs)
+        print(outputs['instances'])
+        predictions = []
+        for p in range(len(outputs['instances'])):
+            print(outputs['instances'][p][0])
 
         #GET GT
         label = np.asarray(Image.open(label_path))
@@ -56,11 +62,10 @@ for f, folder in tqdm(enumerate(listdir(folder_images_path))):
             mask_coord = np.argwhere(label==pattern)
             x0, y0 = mask_coord.min(axis=0)
             x1, y1 = mask_coord.max(axis=0)
-
         break
     break
 
-for directory in listdir(testset_path):
+'''for directory in listdir(testset_path):
     for i in range(3):
         directory = join(testset_path, directory)
         filename = random.choice(listdir(directory))
@@ -74,4 +79,4 @@ for directory in listdir(testset_path):
         #outputs["instances"].pred_boxes
         v = Visualizer(im[:, :, ::-1], MetadataCatalog.get(cfg.DATASETS.TRAIN[0]), scale=1.2)
         v = v.draw_instance_predictions(outputs["instances"].to("cpu"))
-        cv2.imwrite('./FRCNN_inference_threshold_05/'+filename+'.png', v.get_image()[:, :, ::-1])
+        cv2.imwrite('./FRCNN_inference_threshold_05/'+filename+'.png', v.get_image()[:, :, ::-1])'''
