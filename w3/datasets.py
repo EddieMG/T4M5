@@ -1,5 +1,6 @@
 from pathlib import Path
 from itertools import chain
+import numpy as np
 from pycocotools.mask import toBbox
 from detectron2.structures import BoxMode
 from mots_tools_io import (
@@ -57,6 +58,31 @@ def get_KITTI_MOTS_dicts():
     lbl_path = lambda seq_num: base_dir / f"KITTI-MOTS/instances_txt/{seq_num:04d}.txt"
 
     return list(chain(*(yield_dicts(img_dir(i), lbl_path(i)) for i in range(20))))
+
+
+def split(dicts, train=60, val=20, test=20):
+    np.random.shuffle(dicts)
+    weights = train + val + test
+    train_split, val_split = (
+        train * len(dicts) // weights,
+        (train + val) * len(dicts) // weights,
+    )
+    return (dicts[:train_split], dicts[train_split:val_split], dicts[val_split])
+
+
+def register_datasets():
+    """Registers {kitti-mots, mots}_{train, validation, test} datasets (all 6 combinations)
+    """
+    names = [
+        name + suffix
+        for name in ("kitti-mots", "mots")
+        for suffix in ("_train", "_validation", "_test")
+    ]
+    dicts_all = chain(split(get_KITTI_MOTS_dicts()), split(get_MOTS_dicts()))
+    thing_classes = ["Car", "Pedestrian"]
+    for name, dicts in zip(names, dicts_all):
+        DatasetCatalog.register(name, lambda: dicts)
+        MetadataCatalog.get(name).set(thing_classes=thing_classes)
 
 
 if __name__ == "__main__":
