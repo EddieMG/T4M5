@@ -15,6 +15,8 @@ def yield_dicts(img_paths, lbl_path):
     objs = load_txt(lbl_path)
 
     for img_path in img_paths.iterdir():
+        if img_path.suffix not in [".jpg", ".png"]:
+            continue
         idx = int(img_path.stem)
         if idx not in objs or len(objs[idx]) == 0:
             continue
@@ -45,7 +47,7 @@ def get_MOTS_dicts(seq_name="0002"):
 
 def get_KITTI_MOTS_dicts(seq_name="0000"):
     img_paths = base_dir / f"KITTI-MOTS/training/image_02/{seq_name}"
-    lbl_path = base_dir / f"KITTI-MOTS/instances_txt/{seq_name}"
+    lbl_path = base_dir / f"KITTI-MOTS/instances_txt/{seq_name}.txt"
 
     return list(yield_dicts(img_paths, lbl_path))
 
