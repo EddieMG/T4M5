@@ -1,5 +1,5 @@
-# %%
 from pathlib import Path
+from itertools import chain
 from pycocotools.mask import toBbox
 from detectron2.structures import BoxMode
 from mots_tools_io import (
@@ -8,10 +8,8 @@ from mots_tools_io import (
 
 base_dir = Path("/data")
 
-# %%
 
-
-def yield_dicts(img_paths, lbl_path):
+def yield_dicts(img_dir, lbl_path):
     def to_XYXY(bbox):
         bbox[2] += bbox[0]
         bbox[3] += bbox[1]
@@ -19,7 +17,7 @@ def yield_dicts(img_paths, lbl_path):
 
     objs = load_txt(lbl_path)
 
-    for img_path in img_paths.iterdir():
+    for img_path in img_dir.iterdir():
         if img_path.suffix not in [".jpg", ".png"]:
             continue
         idx = int(img_path.stem)
@@ -44,18 +42,21 @@ def yield_dicts(img_paths, lbl_path):
         yield record
 
 
-def get_MOTS_dicts(seq_name="0002"):
-    img_paths = base_dir / f"MOTSChallenge/train/images/{seq_name}"
-    lbl_path = base_dir / f"MOTSChallenge/train/instances_txt/{seq_name}.txt"
+def get_MOTS_dicts():
+    img_dir = lambda seq_num: base_dir / f"MOTSChallenge/train/images/{seq_num:04d}"
+    lbl_path = (
+        lambda seq_num: base_dir
+        / f"MOTSChallenge/train/instances_txt/{seq_num:04d}.txt"
+    )
 
-    return list(yield_dicts(img_paths, lbl_path))
+    return list(chain(*(yield_dicts(img_dir(i), lbl_path(i)) for i in (2, 5, 9, 11))))
 
 
-def get_KITTI_MOTS_dicts(seq_name="0000"):
-    img_paths = base_dir / f"KITTI-MOTS/training/image_02/{seq_name}"
-    lbl_path = base_dir / f"KITTI-MOTS/instances_txt/{seq_name}.txt"
+def get_KITTI_MOTS_dicts():
+    img_dir = lambda seq_num: base_dir / f"KITTI-MOTS/training/image_02/{seq_num:04d}"
+    lbl_path = lambda seq_num: base_dir / f"KITTI-MOTS/instances_txt/{seq_num:04d}.txt"
 
-    return list(yield_dicts(img_paths, lbl_path))
+    return list(chain(*(yield_dicts(img_dir(i), lbl_path(i)) for i in range(20))))
 
 
 if __name__ == "__main__":
@@ -70,7 +71,7 @@ if __name__ == "__main__":
     MetadataCatalog.get("mots").set(thing_classes=thing_classes)
     MetadataCatalog.get("kitti-mots").set(thing_classes=thing_classes)
 
-    dataset_dicts = get_MOTS_dicts()
+    dataset_dicts = get_KITTI_MOTS_dicts()
     for d in random.sample(dataset_dicts, 5):
         img = cv2.imread(d["file_name"])
         visualizer = Visualizer(
