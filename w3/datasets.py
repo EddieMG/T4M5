@@ -12,6 +12,11 @@ base_dir = Path("/data")
 
 
 def yield_dicts(img_paths, lbl_path):
+    def to_XYXY(bbox):
+        bbox[2] += bbox[0]
+        bbox[3] += bbox[1]
+        return bbox
+
     objs = load_txt(lbl_path)
 
     for img_path in img_paths.iterdir():
@@ -21,18 +26,19 @@ def yield_dicts(img_paths, lbl_path):
         if idx not in objs or len(objs[idx]) == 0:
             continue
         record = {
-            "file_name": img_path,
+            "file_name": str(img_path),
             "image_id": idx,
             "height": objs[idx][0].mask["size"][0],
             "width": objs[idx][0].mask["size"][1],
             "annotations": [
                 {
-                    "bbox": toBbox(obj.mask),
+                    "bbox": to_XYXY(toBbox(obj.mask)),
                     "bbox_mode": BoxMode.XYXY_ABS,
-                    "category_id": obj.class_id,
+                    "category_id": obj.class_id - 1,
                     "iscrowd": 0,
                 }
                 for obj in objs[idx]
+                if obj.class_id != 10
             ],
         }
         yield record
@@ -51,3 +57,26 @@ def get_KITTI_MOTS_dicts(seq_name="0000"):
 
     return list(yield_dicts(img_paths, lbl_path))
 
+
+if __name__ == "__main__":
+    import random
+    import cv2
+    from detectron2.data import MetadataCatalog, DatasetCatalog
+    from detectron2.utils.visualizer import Visualizer
+
+    thing_classes = ["Car", "Pedestrian"]
+    DatasetCatalog.register("mots", get_MOTS_dicts)
+    DatasetCatalog.register("kitti-mots", get_MOTS_dicts)
+    MetadataCatalog.get("mots").set(thing_classes=thing_classes)
+    MetadataCatalog.get("kitti-mots").set(thing_classes=thing_classes)
+
+    dataset_dicts = get_MOTS_dicts()
+    for d in random.sample(dataset_dicts, 5):
+        img = cv2.imread(d["file_name"])
+        visualizer = Visualizer(
+            img[:, :, ::-1], metadata=MetadataCatalog.get("mots"), scale=0.5
+        )
+        vis = visualizer.draw_dataset_dict(d)
+        cv2.imshow("here", vis.get_image()[:, :, ::-1])
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
