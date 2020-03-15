@@ -36,7 +36,8 @@ def yield_dicts(img_dir, lbl_path):
                 {
                     "bbox": to_XYXY(toBbox(obj.mask)).tolist(),
                     "bbox_mode": BoxMode.XYXY_ABS,
-                    "category_id": obj.class_id - 1,
+                    # "category_id": obj.class_id - 1,
+                    "category_id": 2 if obj.class_id == 1 else 0,
                     "iscrowd": 0,
                 }
                 for obj in objs[idx]
@@ -82,15 +83,14 @@ if __name__ == "__main__":
     from detectron2 import model_zoo
     from detectron2.engine import DefaultTrainer
 
-    thing_classes = ["Car", "Pedestrian"]
+    thing_classes = ["Pedestrian", "WTF", "Car"]
 
-    #DatasetCatalog.register("mots", get_MOTS_dicts)
-    #MetadataCatalog.get("mots").set(thing_classes=thing_classes)
+    DatasetCatalog.register("mots", get_MOTS_dicts)
+    MetadataCatalog.get("mots").set(thing_classes=thing_classes)
 
-    DatasetCatalog.register("kitti-mots", get_KITTI_MOTS_dicts)
+    DatasetCatalog.register("kitti-mots", lambda: get_KITTI_MOTS_dicts())
     MetadataCatalog.get("kitti-mots").set(thing_classes=thing_classes)
 
-    #dataset_dicts = get_MOTS_dicts()
 
     # We train the model with the weight initialized.
     cfg = get_cfg()
