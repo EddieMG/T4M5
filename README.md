@@ -8,7 +8,9 @@
 - _S. Morawski, malpunek@gmail.com - [malpunek](https://github.com/malpunek)
 
 # Week 1 - Introduction to Pytorch
+
 The main task in to implement the final model from M3 (Image Classification) in Pytorch.
+
 The slides reporting the results obtained can be seen in [these Google Slides](https://).
 
 # Week 2 - Introduction to Object Detection
@@ -20,41 +22,48 @@ D. Train a Faster R-CNN on KITTI dataset
 The slides reporting the results obteined can be seen in [these Google Slides](https://docs.google.com/presentation/d/14V1yCVCiOaDklb_7u7BKgAKRDSIhGrjze1V1CBX6Qm0/edit#slide=id.g7102907464_5_34).
 
 # Week 3 - Multiple Object Tracking and Segmentation
+
 Main tasks:
+
 A. Get familiar with MOTSChallenge and KITTI-MOTS challenges
+
 B. Use object pre-trained object detection models in inference on KITTI-MOTS
+
 C. Evaluate pre-trained object detection models on KITTI-MOTS 
+
 D. Train detection models on KITTI-MOTS and MOTSChallenge training sets
+
 E. Evaluate best trained model on KITTI-MOTS test set
+
 The slides reporting the results obteined can be seen in [these Google Slides](https://docs.google.com/presentation/d/1rppl8bJZF5lnt4Qxvoe_KrF_eDC2S-eNhT6g58L_NlE/edit#slide=id.g7168e8d968_29_0).
 
 # Week 4 - Introduction to Object Segmentation
+
 Main tasks:
+
 A. Apply pre-trained Mask-RCNN models to KITTI-MOTS validation set. Trying different configurations:
 1. Number of layers
 2. Backbone configuration
 3. Use of Feature Pyramid Network
 4. Use of training data (COCO vs COCO+Cityscapes)
+
 B. Train Mask-RCNN model on KITTI-MOTS training set and evaluate on KITTI-MOTS validation set
+
 The slides reporting the results obteined can be seen in [these Google Slides](https://docs.google.com/presentation/d/1Wxv_nS51v2C9CKlNpzeHORPC9lifEhkCmpZSD9jJOXA/edit#slide=id.g718556d907_1_0).
 
 # Week 5 - Transfer Learning for Object Detection and Segmentation
+
 Main tasks:
+
 A. Apply pre-trained and finetuned Mask-RCNN models to MOTSChallenge train set
+  - [x] COCO
+ 
+
 B. Apply pre-trained and finetuned Mask-RCNN models to KITTI-MOTS val set
+
 C. Explore and analyze the impact of different hyperparameters
+
 D. Extend Experiments section on your paper
-
-
-I.  One                                                                                                                                                                                        
-    A.  two                                                                                                                                                                                    
-        1. three                                                                                                                                                                               
-        2. four                                                                                                                                                                                
-            i.  five                                                                                                                                                                           
-            ii.  six                                                                                                                                                                           
-                - seven                                                                                                                                                                        
-                    * eight                                                                                                                                                                    
-II.  Nine
 
 # Paper
 The paper will be updated weekly according to the work done in the project.
