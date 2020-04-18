@@ -34,7 +34,7 @@ A. Apply pre-trained Mask-RCNN models to KITTI-MOTS validation set. Trying diffe
 1. Number of layers
 2. Backbone configuration
 3. Use of Feature Pyramid Network
-4. – Use of training data (COCO vs COCO+Cityscapes)
+4. Use of training data (COCO vs COCO+Cityscapes)
 B. Train Mask-RCNN model on KITTI-MOTS training set and evaluate on KITTI-MOTS validation set
 The slides reporting the results obteined can be seen in [these Google Slides](https://docs.google.com/presentation/d/1Wxv_nS51v2C9CKlNpzeHORPC9lifEhkCmpZSD9jJOXA/edit#slide=id.g718556d907_1_0).
 
@@ -44,6 +44,17 @@ A. Apply pre-trained and finetuned Mask-RCNN models to MOTSChallenge train set
 B. Apply pre-trained and finetuned Mask-RCNN models to KITTI-MOTS val set
 C. Explore and analyze the impact of different hyperparameters
 D. Extend Experiments section on your paper
+
+
+I.  One                                                                                                                                                                                        
+    A.  two                                                                                                                                                                                    
+        1. three                                                                                                                                                                               
+        2. four                                                                                                                                                                                
+            i.  five                                                                                                                                                                           
+            ii.  six                                                                                                                                                                           
+                - seven                                                                                                                                                                        
+                    * eight                                                                                                                                                                    
+II.  Nine
 
 # Paper
 The paper will be updated weekly according to the work done in the project.
