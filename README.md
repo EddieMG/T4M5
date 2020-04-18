@@ -72,7 +72,7 @@ B. Apply pre-trained and finetuned Mask-RCNN models to KITTI-MOTS val set
 C. Explore and analyze the impact of different hyperparameters
   - [x]
 
-D. Extend Experiments section on your paper
+The slides reporting the results obteined can be seen in [these Google Slides](https://docs.google.com/presentation/d/1GoxeIPR7aRU02mNyxeSnqRkAa7uV55FtJaIlOdWdFMM/edit#slide=id.g72363b1db2_18_3).
 
 # Paper
 The paper will be updated weekly according to the work done in the project.
