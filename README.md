@@ -11,7 +11,7 @@
 
 The main task in to implement the final model from M3 (Image Classification) in Pytorch.
 
-The slides reporting the results obtained can be seen in [these Google Slides](https://).
+The slides reporting the results obtained can be seen in [these Google Slides](https://docs.google.com/presentation/d/1n3wsHfT0nL-1LW-X02lgyh8OLpLObmZt5nEjD4H5RaE/edit#slide=id.p).
 
 # Week 2 - Introduction to Object Detection
 Main tasks:
@@ -42,12 +42,14 @@ The slides reporting the results obteined can be seen in [these Google Slides](h
 Main tasks:
 
 A. Apply pre-trained Mask-RCNN models to KITTI-MOTS validation set. Trying different configurations:
-1. Number of layers
-2. Backbone configuration
-3. Use of Feature Pyramid Network
-4. Use of training data (COCO vs COCO+Cityscapes)
+  - [x] Number of layers
+  - [x] Backbone configuration
+  - [x] Use of Feature Pyramid Network
+  - [x] Use of training data (COCO vs COCO+Cityscapes)
 
 B. Train Mask-RCNN model on KITTI-MOTS training set and evaluate on KITTI-MOTS validation set
+  - [x] COCO + KITTI-MOTS
+  - [x] COCO + Cityscapes + KITTI-MOTS
 
 The slides reporting the results obteined can be seen in [these Google Slides](https://docs.google.com/presentation/d/1Wxv_nS51v2C9CKlNpzeHORPC9lifEhkCmpZSD9jJOXA/edit#slide=id.g718556d907_1_0).
 
@@ -57,11 +59,18 @@ Main tasks:
 
 A. Apply pre-trained and finetuned Mask-RCNN models to MOTSChallenge train set
   - [x] COCO
- 
+  - [x] COCO+Cityscapes
+  - [x] COCO+KITTI-MOTS
+  - [x] COCO+Cityscapes+KITTI-MOTS
 
 B. Apply pre-trained and finetuned Mask-RCNN models to KITTI-MOTS val set
+  - [x] COCO + MOTSChallenge
+  - [x] COCO + Cityscapes + MOTSChallenge
+  - [x] COCO + MOTSChallenge + KITTI-MOTS
+  - [x] COCO + Cityscapes + MOTSChallenge + KITTI-MOTS
 
 C. Explore and analyze the impact of different hyperparameters
+  - [x]
 
 D. Extend Experiments section on your paper
 
