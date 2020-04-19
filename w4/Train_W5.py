@@ -136,13 +136,13 @@ if __name__ == '__main__':
     DatasetCatalog.register('KITTIMOTS_val', kitti_val)
     MetadataCatalog.get('KITTIMOTS_val').set(thing_classes=list(KITTI_CATEGORIES.keys()))
 
-    # task_a("MaskRCNN_R_50_C4", "COCO-InstanceSegmentation/mask_rcnn_R_50_C4_3x.yaml", evaluate=False, visualize=True)
-    # task_a("MaskRCNN_R_50_DC5", "COCO-InstanceSegmentation/mask_rcnn_R_50_DC5_3x.yaml", evaluate=False, visualize=True)
-    # task_a("MaskRCNN_R_50_FPN", "COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml", evaluate=False, visualize=True)
-    # task_a("MaskRCNN_R_101_C4", "COCO-InstanceSegmentation/mask_rcnn_R_101_C4_3x.yaml", evaluate=False, visualize=True)
-    # task_a("MaskRCNN_R_101_DC5", "COCO-InstanceSegmentation/mask_rcnn_R_101_DC5_3x.yaml", evaluate=False, visualize=True)
-    # task_a("MaskRCNN_R_101_FPN", "COCO-InstanceSegmentation/mask_rcnn_R_101_FPN_3x.yaml", evaluate=False, visualize=True)
-    # task_a("MaskRCNN_R_50_FPN_Cityscapes", "Cityscapes/mask_rcnn_R_50_FPN.yaml", evaluate=False, visualize=True)
+    task_a("MaskRCNN_R_50_C4", "COCO-InstanceSegmentation/mask_rcnn_R_50_C4_3x.yaml", evaluate=False, visualize=True)
+    task_a("MaskRCNN_R_50_DC5", "COCO-InstanceSegmentation/mask_rcnn_R_50_DC5_3x.yaml", evaluate=False, visualize=True)
+    task_a("MaskRCNN_R_50_FPN", "COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml", evaluate=False, visualize=True)
+    task_a("MaskRCNN_R_101_C4", "COCO-InstanceSegmentation/mask_rcnn_R_101_C4_3x.yaml", evaluate=False, visualize=True)
+    task_a("MaskRCNN_R_101_DC5", "COCO-InstanceSegmentation/mask_rcnn_R_101_DC5_3x.yaml", evaluate=False, visualize=True)
+    task_a("MaskRCNN_R_101_FPN", "COCO-InstanceSegmentation/mask_rcnn_R_101_FPN_3x.yaml", evaluate=False, visualize=True)
+    task_a("MaskRCNN_R_50_FPN_Cityscapes", "Cityscapes/mask_rcnn_R_50_FPN.yaml", evaluate=False, visualize=True)
 
     task_b("MaskRCNN_R_50_C4", "COCO-InstanceSegmentation/mask_rcnn_R_50_C4_3x.yaml") # JOB: 5641,
     task_b("MaskRCNN_R_50_DC5", "COCO-InstanceSegmentation/mask_rcnn_R_50_DC5_3x.yaml")
@@ -151,5 +151,5 @@ if __name__ == '__main__':
     task_b("MaskRCNN_R_101_C4", "COCO-InstanceSegmentation/mask_rcnn_R_101_C4_3x.yaml")
     task_b("MaskRCNN_R_101_FPN", "COCO-InstanceSegmentation/mask_rcnn_R_101_FPN_3x.yaml")
     task_b("MaskRCNN_R_50_FPN_Cityscapes", "Cityscapes/mask_rcnn_R_50_FPN.yaml")
-    #task_b("MaskRCNN_R_50_FPN_Cityscapes_2", "Cityscapes/mask_rcnn_R_50_FPN.yaml")
+    task_b("MaskRCNN_R_50_FPN_Cityscapes_2", "Cityscapes/mask_rcnn_R_50_FPN.yaml")
 

@@ -120,5 +120,5 @@ if __name__ == "__main__":
         ("MaskRCNN_R_50_FPN_Cityscapes", "Cityscapes/mask_rcnn_R_50_FPN.yaml"),
     )
 
-    # for name, yaml_file in nets_b:
-    #     task_b(name, yaml_file)
+    for name, yaml_file in nets_b:
+        task_b(name, yaml_file)
