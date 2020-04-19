@@ -1,5 +1,4 @@
-# flake8: noqa
-# Copied from https://github.com/VisualComputingInstitute/mots_tools/blob/master/mots_common/io.py
+# https://github.com/VisualComputingInstitute/mots_tools/blob/master/mots_common/io.py
 import PIL.Image as Image
 import numpy as np
 import pycocotools.mask as rletools
