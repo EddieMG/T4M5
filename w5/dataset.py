@@ -52,20 +52,6 @@ class MOTS_KITTI_Dataloader():
         self.train_img_dir = MOTSCHALLENGE_TRAIN_IMG
         self.train_label_dir = MOTSCHALLENGE_TRAIN_LABEL
         self.train_mask_dir = MOTSCHALLENGE_TRAIN_MASK
-        if not os.path.isdir(KITTIMOTS_TRAIN_IMG):
-            raise Exception('The image directory is not correct.')
-        if not os.path.isdir(KITTIMOTS_TRAIN_LABEL):
-            raise Exception('The labels directory is not correct.')
-        if not os.path.isdir(KITTIMOTS_TRAIN_MASK):
-            raise Exception('The masks directory is not correct')
-
-
-        if not os.path.isdir(self.train_img_dir):
-            raise Exception('The image directory is not correct.')
-        if not os.path.isdir(self.train_label_dir):
-            raise Exception('The labels directory is not correct.')
-        if not os.path.isdir(self.train_mask_dir):
-            raise Exception('The masks directory is not correct')
 
         label_paths_kitti = sorted(glob(os.path.join(KITTIMOTS_TRAIN_LABEL, '*.txt')))
         label_indices_kitti = ['{0:04d}'.format(l) for l in range(len(label_paths_kitti))]
