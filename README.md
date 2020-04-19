@@ -15,21 +15,32 @@ The slides reporting the results obtained can be seen in [these Google Slides](h
 
 # Week 2 - Introduction to Object Detection
 Main tasks:
+
 (a) Getting familiar with Detectron2 framework
+
 (b) Use object detection models in inference: Faster RCNN
+
 (c) Use object detection models in inference: RetinaNet
+
 (d) Train a Faster R-CNN on KITTI dataset
+
 The slides reporting the results obteined can be seen in [these Google Slides](https://docs.google.com/presentation/d/14V1yCVCiOaDklb_7u7BKgAKRDSIhGrjze1V1CBX6Qm0/edit#slide=id.g7102907464_5_34).
+
 
 # Week 3 - Multiple Object Tracking and Segmentation
 
 Main tasks:
 
 (a) Get familiar with MOTSChallenge and KITTI-MOTS challenges
+
 (b) Use object pre-trained object detection models in inference on KITTI-MOTS
+
 (c) Evaluate pre-trained object detection models on KITTI-MOTS 
+
 (d) Train detection models on KITTI-MOTS and MOTSChallenge training sets
+
 (e) Evaluate best trained model on KITTI-MOTS test set
+
 The slides reporting the results obteined can be seen in [these Google Slides](https://docs.google.com/presentation/d/1rppl8bJZF5lnt4Qxvoe_KrF_eDC2S-eNhT6g58L_NlE/edit#slide=id.g7168e8d968_29_0).
 
 # Week 4 - Introduction to Object Segmentation
