@@ -15,39 +15,34 @@ The slides reporting the results obtained can be seen in [these Google Slides](h
 
 # Week 2 - Introduction to Object Detection
 Main tasks:
-A. Getting familiar with Detectron2 framework
-B. Use object detection models in inference: Faster RCNN
-C. Use object detection models in inference: RetinaNet
-D. Train a Faster R-CNN on KITTI dataset
+(a) Getting familiar with Detectron2 framework
+(b) Use object detection models in inference: Faster RCNN
+(c) Use object detection models in inference: RetinaNet
+(d) Train a Faster R-CNN on KITTI dataset
 The slides reporting the results obteined can be seen in [these Google Slides](https://docs.google.com/presentation/d/14V1yCVCiOaDklb_7u7BKgAKRDSIhGrjze1V1CBX6Qm0/edit#slide=id.g7102907464_5_34).
 
 # Week 3 - Multiple Object Tracking and Segmentation
 
 Main tasks:
 
-A. Get familiar with MOTSChallenge and KITTI-MOTS challenges
-
-B. Use object pre-trained object detection models in inference on KITTI-MOTS
-
-C. Evaluate pre-trained object detection models on KITTI-MOTS 
-
-D. Train detection models on KITTI-MOTS and MOTSChallenge training sets
-
-E. Evaluate best trained model on KITTI-MOTS test set
-
+(a) Get familiar with MOTSChallenge and KITTI-MOTS challenges
+(b) Use object pre-trained object detection models in inference on KITTI-MOTS
+(c) Evaluate pre-trained object detection models on KITTI-MOTS 
+(d) Train detection models on KITTI-MOTS and MOTSChallenge training sets
+(e) Evaluate best trained model on KITTI-MOTS test set
 The slides reporting the results obteined can be seen in [these Google Slides](https://docs.google.com/presentation/d/1rppl8bJZF5lnt4Qxvoe_KrF_eDC2S-eNhT6g58L_NlE/edit#slide=id.g7168e8d968_29_0).
 
 # Week 4 - Introduction to Object Segmentation
 
 Main tasks:
 
-A. Apply pre-trained Mask-RCNN models to KITTI-MOTS validation set. Trying different configurations:
+(a) Apply pre-trained Mask-RCNN models to KITTI-MOTS validation set. Trying different configurations:
   - [x] Number of layers
   - [x] Backbone configuration
   - [x] Use of Feature Pyramid Network
   - [x] Use of training data (COCO vs COCO+Cityscapes)
 
-B. Train Mask-RCNN model on KITTI-MOTS training set and evaluate on KITTI-MOTS validation set
+(b) Train Mask-RCNN model on KITTI-MOTS training set and evaluate on KITTI-MOTS validation set
   - [x] COCO + KITTI-MOTS
   - [x] COCO + Cityscapes + KITTI-MOTS
 
@@ -57,19 +52,19 @@ The slides reporting the results obteined can be seen in [these Google Slides](h
 
 Main tasks:
 
-A. Apply pre-trained and finetuned Mask-RCNN models to MOTSChallenge train set
+(a) Apply pre-trained and finetuned Mask-RCNN models to MOTSChallenge train set
   - [x] COCO
   - [x] COCO+Cityscapes
   - [x] COCO+KITTI-MOTS
   - [x] COCO+Cityscapes+KITTI-MOTS
 
-B. Apply pre-trained and finetuned Mask-RCNN models to KITTI-MOTS val set
+(b) Apply pre-trained and finetuned Mask-RCNN models to KITTI-MOTS val set
   - [x] COCO + MOTSChallenge
   - [x] COCO + Cityscapes + MOTSChallenge
   - [x] COCO + MOTSChallenge + KITTI-MOTS
   - [x] COCO + Cityscapes + MOTSChallenge + KITTI-MOTS
 
-C. Explore and analyze the impact of different hyperparameters
+(c) Explore and analyze the impact of different hyperparameters
   - [x]
 
 The slides reporting the results obteined can be seen in [these Google Slides](https://docs.google.com/presentation/d/1GoxeIPR7aRU02mNyxeSnqRkAa7uV55FtJaIlOdWdFMM/edit#slide=id.g72363b1db2_18_3).
