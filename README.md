@@ -14,7 +14,7 @@ The main task in to implement the final model from M3 (Image Classification) in 
 
 The slides reporting the results obtained can be seen in [these Google Slides](https://docs.google.com/presentation/d/1n3wsHfT0nL-1LW-X02lgyh8OLpLObmZt5nEjD4H5RaE/edit#slide=id.p).
 
-The code to run this task can be found at **w1** folder.
+The code to run this task is the **main.py** that can be found at **w1** folder.
 
 
 # Week 2 - Introduction to Object Detection
@@ -30,7 +30,7 @@ Main tasks:
 
 The slides reporting the results obteined can be seen in [these Google Slides](https://docs.google.com/presentation/d/14V1yCVCiOaDklb_7u7BKgAKRDSIhGrjze1V1CBX6Qm0/edit#slide=id.g7102907464_5_34).
 
-The code to run this task can be found at **w2** folder.
+The code to run these tasks are the **task_a.py task_b.py task_c.py task_d.py** an be found at **w2** folder.
 
 
 # Week 3 - Multiple Object Tracking and Segmentation
@@ -49,7 +49,7 @@ Main tasks:
 
 The slides reporting the results obteined can be seen in [these Google Slides](https://docs.google.com/presentation/d/1rppl8bJZF5lnt4Qxvoe_KrF_eDC2S-eNhT6g58L_NlE/edit#slide=id.g7168e8d968_29_0).
 
-The code to run this task can be found at **w3** folder.
+The code to run these tasks are the **task_b_faster.py task_b_retina.py task_c_faster.py task_c_retina.py task_d.py** an be found at **w3** folder.
 
 
 # Week 4 - Introduction to Object Segmentation
@@ -68,7 +68,7 @@ Main tasks:
 
 The slides reporting the results obteined can be seen in [these Google Slides](https://docs.google.com/presentation/d/1Wxv_nS51v2C9CKlNpzeHORPC9lifEhkCmpZSD9jJOXA/edit#slide=id.g718556d907_1_0).
 
-The code to run this task can be found at **w4** folder.
+The code to run all tasks together is the **main.py** that can be found at **w4** folder.
 
 
 # Week 5 - Transfer Learning for Object Detection and Segmentation
@@ -94,7 +94,7 @@ Main tasks:
 
 The slides reporting the results obteined can be seen in [these Google Slides](https://docs.google.com/presentation/d/1GoxeIPR7aRU02mNyxeSnqRkAa7uV55FtJaIlOdWdFMM/edit#slide=id.g72363b1db2_18_3).
 
-The code to run this task can be found at **w5** folder.
+The code to run tasks a and b together is the **task_a_b.py** that can be found at **w5** folder. Hyperparameters for task c can be changed on the task_b_MOTS_and_KITTI_training function placed at task_a_b.py file.
 
 
 # Week 6 - Data Augmentation, Semantic Segmentation and Video Object Segmentation
