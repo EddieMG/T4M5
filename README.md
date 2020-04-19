@@ -75,8 +75,10 @@ Main tasks:
   - [x] COCO + MOTSChallenge + KITTI-MOTS
   - [x] COCO + Cityscapes + MOTSChallenge + KITTI-MOTS
 
-(c) Explore and analyze the impact of different hyperparameters
-  - [x]
+(c) Explore and analyze the impact of different hyperparameters. We have managed to try these ones:
+  - [x] IOU_THRESHOLD
+  - [x] LR_SCHEDULER
+  - [x] ANCHOR_GENERATOR.SIZES
 
 The slides reporting the results obteined can be seen in [these Google Slides](https://docs.google.com/presentation/d/1GoxeIPR7aRU02mNyxeSnqRkAa7uV55FtJaIlOdWdFMM/edit#slide=id.g72363b1db2_18_3).
 
