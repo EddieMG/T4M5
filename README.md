@@ -7,11 +7,15 @@
 - _P. Albacar, pol.albacar@hotmail.com - [polalbacar](https://github.com/polalbacar)_
 - _S. Morawski, malpunek@gmail.com - [malpunek](https://github.com/malpunek)_
 
+
 # Week 1 - Introduction to Pytorch
 
 The main task in to implement the final model from M3 (Image Classification) in Pytorch.
 
 The slides reporting the results obtained can be seen in [these Google Slides](https://docs.google.com/presentation/d/1n3wsHfT0nL-1LW-X02lgyh8OLpLObmZt5nEjD4H5RaE/edit#slide=id.p).
+
+The code to run this task can be found at **w1** folder.
+
 
 # Week 2 - Introduction to Object Detection
 Main tasks:
@@ -25,6 +29,8 @@ Main tasks:
 (d) Train a Faster R-CNN on KITTI dataset
 
 The slides reporting the results obteined can be seen in [these Google Slides](https://docs.google.com/presentation/d/14V1yCVCiOaDklb_7u7BKgAKRDSIhGrjze1V1CBX6Qm0/edit#slide=id.g7102907464_5_34).
+
+The code to run this task can be found at **w2** folder.
 
 
 # Week 3 - Multiple Object Tracking and Segmentation
@@ -43,6 +49,9 @@ Main tasks:
 
 The slides reporting the results obteined can be seen in [these Google Slides](https://docs.google.com/presentation/d/1rppl8bJZF5lnt4Qxvoe_KrF_eDC2S-eNhT6g58L_NlE/edit#slide=id.g7168e8d968_29_0).
 
+The code to run this task can be found at **w3** folder.
+
+
 # Week 4 - Introduction to Object Segmentation
 
 Main tasks:
@@ -58,6 +67,9 @@ Main tasks:
   - [x] COCO + Cityscapes + KITTI-MOTS
 
 The slides reporting the results obteined can be seen in [these Google Slides](https://docs.google.com/presentation/d/1Wxv_nS51v2C9CKlNpzeHORPC9lifEhkCmpZSD9jJOXA/edit#slide=id.g718556d907_1_0).
+
+The code to run this task can be found at **w4** folder.
+
 
 # Week 5 - Transfer Learning for Object Detection and Segmentation
 
@@ -82,13 +94,28 @@ Main tasks:
 
 The slides reporting the results obteined can be seen in [these Google Slides](https://docs.google.com/presentation/d/1GoxeIPR7aRU02mNyxeSnqRkAa7uV55FtJaIlOdWdFMM/edit#slide=id.g72363b1db2_18_3).
 
+The code to run this task can be found at **w5** folder.
+
+
+# Week 6 - Data Augmentation, Semantic Segmentation and Video Object Segmentation
+
+Main tasks:
+
+(a) Add data augmentation techniques to Detectron2 framework
+
+(b) Train your model on a synthetic dataset and finetune it on a real dataset
+
+(c) Train a semantic segmentation model (DeepLabv3)
+
+The slides reporting the results obteined can be seen in [these Google Slides](https://docs.google.com/presentation/d/1ydBIwr2Vx4eIkHH6BRrn0nSDtqjCqCaG16S4zq_4Se8/edit#slide=id.g7350972f6d_0_0).
+
+The code to run this task can be found at **w6** folder.
+
+
 # Paper
 The paper will be updated weekly according to the work done in the project.
-[M5 Project: Object Detection and Segmentation](https://www.overleaf.com/read/zwjphfsmqyjt)
+[M5 Project: Weekly paper](https://www.overleaf.com/read/zwjphfsmqyjt)
 
-# Report
-
-The weekly report delivered can be found on the following link:
-[M5 Report: Week 1](https://docs.google.com/presentation/d/1n3wsHfT0nL-1LW-X02lgyh8OLpLObmZt5nEjD4H5RaE/edit?usp=sharing)
+The final paper (compated in 4 pages): [M5 Project: Final paper](https://www.overleaf.com/read/zwjphfsmqyjt)
 
 
