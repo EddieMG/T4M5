@@ -1,0 +1,49 @@
+TRAINW5 is the same file we used on w4.
+
+The other 4 .py files are the conversion done by Stanislaw.
+
+We should run/check those 4 files and start week 5 deliveries.
+
+
+TASKS:
+
+(A) Evaluate on MOTS Qualitative and Quantitative both segm and object detection
+
+  Trained on COCO                                                   DONE. Job: 6185
+  Trained on COCO + Cityscapes                                      DONE. Job: 6185
+  Trained on COCO + KITTIMOTS                                       DONE. Job: 6199
+  Trained on COCO + Cityscapes + KITTIMOTS                          DONE. Job: 6230
+
+
+(B) Evalutate on KITTI_VAL the following:
+(do the same as week 4 but with MOTSChallenge on some models.)
+
+ COCO (Week 4)                                                      DONE
+ COCO + MOTSChallenge                                               DONE. Job: 6622/6314
+ COCO + Cityscapes (Week 4)                                         DONE
+ COCO + Cityscapes + MOTSChallenge                                  DONE. Job: 6606/6314
+ COCO + KITTI-MOTS (Week 4)                                         DONE
+ COCO + MOTSChallenge + KITTI-MOTS (training)                       DONE job 6405 and 6412
+ COCO + Cityscapes + KITTI-MOTS (Week 4)                            DONE
+ COCO + Cityscapes + MOTSChallenge + KITTI-MOTS (training)          DONE. Job: 6415
+
+(C) Hyperparameter search on COCO + Cityscapes + MOTSChallenge + KITTI-MOTS
+
+ (1) Job: 6531 ->   cfg.MODEL.RPN.IOU_THRESHOLDS = [0.4, 0.6]
+ (2) Job: 6532 ->   cfg.MODEL.RPN.IOU_THRESHOLDS = [0.2, 0.8] #defatults 0.3 and 0.7
+ (3) Job: 6564 ->   cfg.MODEL.RPN.IOU_THRESHOLDS = [0.1, 0.9] #defatults 0.3 and 0.7
+
+ (4) Job: 6570 -> Different LR scheduler "WarmupCosineLR" default: WarmupMultiStepLR" to get the values for the default get the job 6415
+
+ (5) Job: 6567 -> cfg.MODEL.ANCHOR_GENERATOR.SIZES = [[32, 64]]
+ (6) Job: 6598 -> cfg.MODEL.ANCHOR_GENERATOR.SIZES = [[256, 512]]
+
+Take the best model of the ones above and tune hyperparameters. If we have extra time take the runnerups as well.
+
+- Input resolution
+� Data augmentation with cropping
+� Number of top scoring precomputed proposals to keep for training
+� Anchor sizes and anchor aspect ratios
+� IOU overlap ratios [BG_IOU_THRESHOLD, FG_IOU_THRESHOLD]
+� Number of top scoring RPN proposals to keep
+� LR scheduler options
