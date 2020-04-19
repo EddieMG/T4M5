@@ -116,6 +116,6 @@ The code to run these tasks are the **task_a.py task_b.py task_c.py** an be foun
 The paper will be updated weekly according to the work done in the project.
 [M5 Project: Weekly paper](https://www.overleaf.com/read/zwjphfsmqyjt)
 
-The final paper (compated in 4 pages): [M5 Project: Final paper](https://www.overleaf.com/read/zwjphfsmqyjt)
+The final paper (compacted in 4 pages): [M5 Project: Final paper](https://www.overleaf.com/read/zwjphfsmqyjt)
 
 
