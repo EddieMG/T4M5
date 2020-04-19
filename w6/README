@@ -1,0 +1,32 @@
+TASKS:
+
+(A) Add data augmentation techniques to Detectron2 framework
+
+    (NoAug) Without augmentation                                                                            DONE. Job: 6703
+    (Aug1)  RandomCrop('relative', [0.8, 0.4]) and RandomFlip(prob=0.5, horizontal=True, vertical=False)    DONE. Job: 7128
+    (Aug2)  RandomCrop('relative', [0.8, 0.4])                                                              DONE: Job: 7206
+    (Aug3)  RandomFlip(prob=0.5, horizontal=True, vertical=False)                                           DONE: Job: 7207
+
+
+(B) Train your model on a synthetic dataset and finetune it on a real dataset:
+    Experiment 1:
+        () Training on real (1,2,6,18,20), validation on real (0,3,10,12,14) and test on real (4,5,7,8,9,11,15)                                                     DONE: Job: 7231
+        (2) Training on virtual clones (1,2,6,18,20), validation on real (0,3,10,12,14) and test on real (4,5,7,8,9,11,15)                                          DONE: Job: 7405
+        (3) Training on virtual clones (1,2,6,18,20) and finetuning on real (1,2,6,18,20), validation on real (0,3,10,12,14) and test on real (4,5,7,8,9,11,15)     DONE: Job: 7412
+
+    Experiment 2:
+        (E2_1) Training on real + virtual clones (1,2,6,18,20)  DONE: 7415
+
+        (E2_2) 80% real + 100% virtual                          DONE: 7415
+        (E2_3) 60% real + 100% virtual                          DONE: 7415
+        (E2_4) 40% real + 100% virtual                          DONE: 7415
+        (E2_5) 20% real + 100% virtual                          DONE: 7415
+        (E2_6) 10% real + 100% virtual                          DONE: 7415
+
+        (E2_2_rand) 80% real + 100% virtual                     DONE: 7423
+        (E2_3_rand) 60% real + 100% virtual                     DONE: 7423
+        (E2_4_rand) 40% real + 100% virtual                     DONE: 7423
+        (E2_5_rand) 20% real + 100% virtual                     DONE: 7423
+        (E2_6_rand) 10% real + 100% virtual                     DONE: 7423
+
+
