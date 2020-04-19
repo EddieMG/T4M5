@@ -109,7 +109,7 @@ Main tasks:
 
 The slides reporting the results obteined can be seen in [these Google Slides](https://docs.google.com/presentation/d/1ydBIwr2Vx4eIkHH6BRrn0nSDtqjCqCaG16S4zq_4Se8/edit#slide=id.g7350972f6d_0_0).
 
-The code to run this task can be found at **w6** folder.
+The code to run these tasks are the **task_b.py task_b.py task_c.py** an be found at **w6** folder.
 
 
 # Paper
