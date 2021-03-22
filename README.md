@@ -5,7 +5,7 @@
 - _E. Mainou, eduardmgobierno@gmail.com - [EddieMG](https://github.com/EddieMG)_
 - _H. Valenciano, hermes.valenciano1996@gmail.com - [hermesvf](https://github.com/hermesvf)_
 - _P. Albacar, pol.albacar@hotmail.com - [polalbacar](https://github.com/polalbacar)_
-- _S. Morawski, malpunek@gmail.com - [malpunek](https://github.com/malpunek)_
+
 
 
 # Week 1 - Introduction to Pytorch
